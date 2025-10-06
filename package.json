@@ -28,13 +28,15 @@
     "react-is": "^19.2.0",
     "recharts": "^3.1.2",
     "ws": "^8.18.3",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+     "@tailwindcss/postcss": "^4"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
+   
     "@types/ws": "^8.18.1"
    
   }
 }
+
 
 
