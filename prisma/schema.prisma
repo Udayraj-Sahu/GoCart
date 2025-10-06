@@ -1,6 +1,6 @@
 generator client {
     provider        = "prisma-client-js"
-    previewFeatures = ["driverAdapters"]
+  
 }
 
 datasource db {
@@ -161,3 +161,4 @@ model Store {
     Order   Order[]
     user    User      @relation(fields: [userId], references: [id])
 }
+
