@@ -38,7 +38,6 @@ export const syncUserUpdation = inngest.createFunction(
 	}
 );
 
-
 //Inngest Function to delete user from database
 
 export const syncUserDeletion = inngest.createFunction(
@@ -48,6 +47,25 @@ export const syncUserDeletion = inngest.createFunction(
 		const { data } = event;
 		await prisma.user.delete({
 			where: { id: data.id },
+		});
+	}
+);
+
+//Inngest Function to delete Coupon on Expiry
+
+export const deleteCouponOnExpiry = inngest.createFunction(
+	{ id: "delete-coupon-on-expiry" },
+	{ event: "app/coupon.expired" },
+
+	async ({ event, step }) => {
+		const { data } = event;
+		const expiryDate = new Date(data.expires_at);
+		await step.sleepUntil("wait-for-expiry", expiryDate);
+
+		await step.run("delete-coupon-from-database", async () => {
+			await prisma.coupon.delete({
+				where: { code: data.code },
+			});
 		});
 	}
 );

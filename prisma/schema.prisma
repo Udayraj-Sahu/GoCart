@@ -17,7 +17,7 @@ model User {
     image String
     cart  Json   @default("{}")
 
-    // Relations
+    // Relationsnpm 
     ratings     Rating[]
     Address     Address[]
     store       Store?
@@ -161,4 +161,3 @@ model Store {
     Order   Order[]
     user    User      @relation(fields: [userId], references: [id])
 }
-
