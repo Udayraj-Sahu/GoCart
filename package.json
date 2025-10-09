@@ -15,6 +15,7 @@
 		"@prisma/adapter-neon": "^6.16.3",
 		"@prisma/client": "^6.16.3",
 		"@reduxjs/toolkit": "^2.8.2",
+		"@tailwindcss/postcss": "^4",
 		"axios": "^1.12.2",
 		"date-fns": "^4.1.0",
 		"imagekit": "^6.0.0",
@@ -28,13 +29,11 @@
 		"react-is": "^19.2.0",
 		"react-redux": "^9.2.0",
 		"recharts": "^3.1.2",
+		"stripe": "^19.1.0",
 		"tailwindcss": "^4",
-		"ws": "^8.18.3",
-		"@tailwindcss/postcss": "^4"
+		"ws": "^8.18.3"
 	},
 	"devDependencies": {
-		
 		"@types/ws": "^8.18.1"
 	}
 }
-
