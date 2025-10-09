@@ -23,20 +23,19 @@ export async function POST(request) {
 		const formData = await request.formData();
 
 		const name = formData.get("name");
-		const username = formData.get("username");
+		
 		const description = formData.get("description");
 		const mrp = Number(formData.get("mrp"));
 		const price = Number(formData.get("price"));
 		const category = formData.get("category");
-		const images = formData.get("images");
+		const images = formData.getAll("images");
 		if (
 			!name ||
-			!username ||
 			!description ||
-			!email ||
-			!contact ||
-			!address ||
-			!image
+			!images ||
+			!mrp ||
+			!price ||
+			!category
 		) {
 			return NextResponse.json(
 				{ error: "missing product info" },
@@ -64,6 +63,8 @@ export async function POST(request) {
 				return url;
 			})
 		);
+
+
 		await prisma.product.create({
 			data: {
 				name,
@@ -103,10 +104,10 @@ export async function GET(request) {
 		});
 		return NextResponse.json({ products });
 	} catch (error) {
-        console.error(error);
+		console.error(error);
 		return NextResponse.json(
 			{ error: error.code || error.message },
 			{ status: 400 }
 		);
-    }
+	}
 }

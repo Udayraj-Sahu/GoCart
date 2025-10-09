@@ -3,12 +3,11 @@
 import prisma from "@/lib/prisma";
 import authSeller from "@/middlewares/authSeller";
 import { getAuth } from "@clerk/nextjs/server";
-import { err } from "inngest/types";
 import { NextResponse } from "next/server";
 
 export async function POST(request) {
 	try {
-		const { userId } = await getAuth(request);
+		const { userId } = getAuth(request);
 		const { productId } = await request.json();
 
 		if (!productId) {
@@ -41,11 +40,14 @@ export async function POST(request) {
 			where: { id: productId },
 			data: { inStock: !product.inStock },
 		});
+		return NextResponse.json({
+			message: "Stock status updated successfully",
+		});
 	} catch (error) {
-        console.error(error);
+		console.error(error);
 		return NextResponse.json(
 			{ error: error.code || error.message },
 			{ status: 400 }
 		);
-    }
+	}
 }
