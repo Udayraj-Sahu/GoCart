@@ -11,8 +11,7 @@
 - [🗂️ MVC Architecture](#-mvc-architecture)
 - [🛠️ Tech Stack](#-tech-stack)
 - [🚀 Getting Started](#-getting-started)
-- [🤝 Contributing](#-contributing)
-- [📜 License](#-license)
+
 
 ---
 
@@ -69,3 +68,4 @@ Install dependencies:
 
 ```bash
 npm install
+
